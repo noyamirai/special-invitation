@@ -14,7 +14,17 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 html { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 *, *:before, *:after { -webkit-box-sizing: inherit; -moz-box-sizing: inherit; box-sizing: inherit; }
 
+:root {
+  --color-bg: #E1E3F5;
+  --color-bg-shadow: #c4c5dd;
 
+  --color-text: #000000;
+  --color-text-white: #FFFFFF;
+
+  --color-primary: #FF99C3;
+  --color-primary-shadow: #EA77A6;
+  --color-primary-hover: #F78BB8;
+}
 /* =============================================================================
   #GENERAL
 ============================================================================= */
@@ -33,22 +43,17 @@ html {
 }
 
 body {
-  font-family: brandon-grotesque, sans-serif;
-  font-weight: 400;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
   font-style: normal;
 
-  color: #1D1D1B;
+  color: var(--color-text);
   font-size: 18px; font-size: 1.8rem;
   line-height: 1.4;
   -webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 
-  background-color: #ffffff;
-}
-
-/* Container */
-.container {
-  padding: 0 100px;
+  background-color: var(--color-bg);
 }
 
 img {
@@ -65,28 +70,23 @@ h1, h2, h3, h4, h5, h6 {
 
   line-height: 1.1;
 }
-
-/* Add margin top to heading when it comes after another piece of content */
-* + h1, * + h2, * + h3, * + h4, * + h5, * + h6 {
-  /* margin-top: 60px; */
-}
-
 /* Heading 1 */
 h1 {
-  margin-bottom: 16px;
-
-  font-size: 35px; font-size: 3.5rem;
+  font-size: 35px;
+  font-size: 3.5rem;
 }
 
 /* Heading 2 */
 h2 {
   margin-bottom: 12px;
-  font-size: 22px; font-size: 2.2rem;
+  font-size: 22px;
+  font-size: 2.2rem;
 }
 
 /* Heading 3 */
 h3 {
-  font-size: 18px; font-size: 1.8rem;
+  font-size: 18px;
+  font-size: 1.8rem;
 }
 
 p {
@@ -102,11 +102,13 @@ strong {
   font-weight: 700;
 }
 
-em, i {
+em,
+i {
   font-style: italic;
 }
 
-ul, ol {
+ul,
+ol {
   padding-left: 30px;
 }
 
@@ -119,33 +121,133 @@ ol {
 }
 
 /* =============================================================================
-  #NAVIGATION
-============================================================================= */
-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  margin: 0px 100px 0px 100px;
-
-  /* background-color: #ffffff; */
-}
-
-/* =============================================================================
-  #BANNER
-============================================================================= */
-
-
-/* =============================================================================
   #MAIN
 ============================================================================= */
+main {
+  position: relative;
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  flex-direction: column;
+
+  width: 100vw;
+  height: 100vh; 
+}
+
+  main>div {
+    position: relative;
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    flex-direction: column;
+    z-index: 10;
+
+    width: 90vw;
+  }
+
+    button {
+      position: relative;
+      border: none;
+
+      padding: 12px 30px;
+      border-radius: 7px;
+
+      background: var(--color-primary);
+
+      color: var(--color-text-white);
+      font-size: 18px;
+      font-size: 1.8rem;
+      font-weight: 700;
+
+      box-shadow: 0 12px var(--color-primary-shadow);
+
+      -webkit-font-smoothing: inherit;
+      -moz-osx-font-smoothing: inherit;
+      -webkit-appearance: none;
+
+      cursor: pointer;
+      transition: all ease-in-out .17s;
+      z-index: 10;
+    }
+
+    button:hover {
+      /* background-color: var(--color-primary-hover); */
+    }
+
+    button:active {
+      margin: 12px 0 0 0;
+      box-shadow: 0 0 var(--color-primary-shadow)
+    }
+
+  main>div::before {
+    content: "";
+    position: absolute;
+
+    top: 0;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 100%;
+    height: calc(100% + 102px);
+
+    background-color: var(--color-bg);
+    /* opacity: 50%; */
+    border-bottom: 4px solid var(--color-bg-shadow);
+  }
+
+    main img {
+      position: relative;
+      width: auto;
+      height: 120px;
+
+      margin: 40px 0px;
+    }
+
+  section { 
+    position: absolute;
+    left: 50%;
+    top: -100%;
+
+    transform: translate(-50%, 100%);
+
+    margin-top: 0;
+    background-color: var(--color-text-white);
+
+    width: 85vw;
+    padding: 30px;
+
+    border-radius: 7px;
+    border: 4px solid var(--color-text);
+  }
 
 
-/* =============================================================================
-  #BUTTON
-============================================================================= */
+@media screen and (min-width: 650px) {
+  main>div {
+    width: 80vw;
+  }
 
+  section {
+    width: 75vw;
+  }
+}
 
-/* =============================================================================
-  #FOOTER
-============================================================================= */
+@media screen and (min-width: 850px) {
+  main>div {
+    width: 60vw;
+  }
+
+  section {
+    width: 55vw;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  main>div {
+    width: 50vw;
+  }
+
+  section {
+    width: 45vw;
+  }
+}
