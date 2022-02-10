@@ -50,7 +50,7 @@ body {
   font-style: normal;
 
   color: var(--color-text);
-  font-size: 18px; font-size: 1.8rem;
+  font-size: 16px; font-size: 1.6rem;
   line-height: 1.4;
   -webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
@@ -74,8 +74,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 /* Heading 1 */
 h1 {
-  font-size: 35px;
-  font-size: 3.5rem;
+  font-size: 20px;
+  font-size: 2.0rem;
+  margin-bottom: 16px;
 }
 
 /* Heading 2 */
@@ -93,6 +94,10 @@ h3 {
 
 p {
   margin-bottom: 2rem;
+}
+
+p:last-of-type {
+  margin-bottom: 0;
 }
 
 a {
@@ -170,13 +175,15 @@ main {
       cursor: pointer;
       transition: all ease-in-out .17s;
       z-index: 10;
+
+      min-width: 210px;
     }
 
     button:active {
       margin: 12px 0 0 0;
       box-shadow: 0 0 var(--color-primary-shadow)
     }
-
+  
   main>div::before {
     content: "";
     position: absolute;
@@ -203,6 +210,7 @@ main {
     }
 
   section { 
+    text-align: center;
     background-color: var(--color-text-white);
 
     transform: translateY(var(--top-transform));
@@ -216,11 +224,11 @@ main {
   }
 
   .startAnimation {
-    animation: openLetter 1.5s ease-in-out forwards;
+    animation: openLetter 1s ease-in-out forwards;
   }
 
   .closeAnimation {
-    animation: closeLetter 1.5s ease-in-out forwards;
+    animation: closeLetter 1s ease-in-out forwards;
   }
 
   @keyframes openLetter {

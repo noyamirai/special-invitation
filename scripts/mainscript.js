@@ -8,9 +8,11 @@ buttonElement.addEventListener("click", event => {
         console.log("animation done");
         letterSection.classList.remove("startAnimation");
         letterSection.classList.add("closeAnimation");
+        buttonElement.textContent = "Open special letter";
     } else {
         console.log('start first animation');
         letterSection.classList.add("startAnimation");
         letterSection.classList.remove("closeAnimation");
+        buttonElement.textContent = "Close letter";
     }
 })
